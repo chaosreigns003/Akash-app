@@ -41,7 +41,7 @@ fig1 = px.pie(alloc_df, names='Instrument', values='Allocation (%)', title='Asse
 st.plotly_chart(fig1)
 
 # ------------------------ 2. 10-Year Debt vs Equity Returns ------------------------
-st.header("\ud83d\udcc9 2. 10-Year Debt vs Equity Returns")
+st.header("2. 10-Year Debt vs Equity Returns")
 years = list(range(2014, 2024))
 equity_returns = [12, 10, 15, 18, 11, -3, 8, 20, 13, 16]
 debt_returns = [7, 6.5, 6.8, 7.2, 6.9, 6.5, 6.7, 7, 6.8, 6.6]
