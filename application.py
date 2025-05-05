@@ -121,7 +121,7 @@ def post_retirement_income_models(total_corpus, annuity_rate, swp_amount):
 corpus = st.number_input("Total Corpus at Retirement (₹)", 100000, 100000000, 1000000)
 annuity_rate = st.slider("Annuity Rate (%)", 1, 10, 6)
 swp_amount = st.number_input("SWP Monthly Amount (₹)", 1000, 100000, 10000)
-if st.button("\ud83d\udcc8 Simulate Income Models"):
+if st.button("Simulate Income Models"):
     annuity, swp_years = post_retirement_income_models(corpus, annuity_rate, swp_amount)
     st.success(f"Annual Annuity Income: ₹{annuity:,.0f}\nSWP Duration: {swp_years:.1f} years")
 
@@ -137,4 +137,4 @@ if st.button("Download Excel Summary"):
             df_growth.to_excel(writer, sheet_name='Growth Over Time', index=False)
         df_comparison.to_excel(writer, sheet_name='Option Comparison', index=False)
         alloc_df.to_excel(writer, sheet_name='Risk Allocation', index=False)
-    st.download_button("\ud83d\udcc4 Click to Download Excel File", data=output.getvalue(), file_name="optimal_retirement_portfolio.xlsx")
+    st.download_button("Click to Download Excel File", data=output.getvalue(), file_name="optimal_retirement_portfolio.xlsx")
