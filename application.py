@@ -49,7 +49,7 @@ returns_df = pd.DataFrame({"Year": years, "Equity Returns (%)": equity_returns, 
 st.bar_chart(returns_df.set_index("Year"))
 
 # ------------------------ 3. Retirement Portfolio Summary ------------------------
-st.header("\ud83d\udcbc 3. Retirement Portfolio Summary")
+st.header("3. Retirement Portfolio Summary")
 months = investment_duration * 12
 total_investment = monthly_investment * months
 future_value_equity = monthly_investment * (((1 + estimated_return_equity/100/12) ** months - 1) / (estimated_return_equity/100/12))
@@ -59,7 +59,7 @@ st.write(f"**Total Investment:** ₹{total_investment:,.0f}")
 st.write(f"**Future Value (Equity-Based):** ₹{future_value_equity:,.0f}")
 st.write(f"**Future Value (Traditional):** ₹{future_value_traditional:,.0f}")
 
-if st.checkbox("\ud83d\udcca Show Year-by-Year Growth"):
+if st.checkbox("Show Year-by-Year Growth"):
     years = list(range(age, retirement_age + 1))
     equity_growth = [monthly_investment * (((1 + estimated_return_equity/100/12) ** (i*12) - 1) / (estimated_return_equity/100/12)) for i in range(len(years))]
     traditional_growth = [monthly_investment * (((1 + estimated_return_traditional/100/12) ** (i*12) - 1) / (estimated_return_traditional/100/12)) for i in range(len(years))]
@@ -69,7 +69,7 @@ else:
     df_growth = pd.DataFrame()
 
 # ------------------------ 4. Investment Option Comparison ------------------------
-st.header("\ud83d\udd04 4. Comparison of Investment Options")
+st.header("4. Comparison of Investment Options")
 data = {
     "Option": ["Equity Mutual Fund", "Public Provident Fund (PPF)", "Employees Provident Fund (EPF)", "National Pension Scheme (NPS)"],
     "Expected Returns (p.a.)": [12, 7.1, 8.1, 9],
@@ -80,7 +80,7 @@ df_comparison = pd.DataFrame(data)
 st.dataframe(df_comparison)
 
 # ------------------------ 5. SIP Simulation ------------------------
-st.header("\ud83d\udd2e 5. SIP-Based Investment Simulation")
+st.header("5. SIP-Based Investment Simulation")
 def sip_simulation(monthly_investment, annual_return_rate, years):
     total_invested = monthly_investment * 12 * years
     future_value = 0
@@ -99,7 +99,7 @@ if st.button("\ud83e\uddf2 Calculate SIP Growth"):
     st.bar_chart(pd.DataFrame({"Future Value": [value], "Invested": [invested]}))
 
 # ------------------------ 6. Tax Benefit Estimation ------------------------
-st.header("\ud83d\udcb0 6. Tax Benefit Estimation")
+st.header("6. Tax Benefit Estimation")
 def tax_benefits(investment_amount):
     sec_80c_limit = 150000
     eligible = min(investment_amount, sec_80c_limit)
@@ -112,7 +112,7 @@ if investment:
     st.info(f"Eligible under Sec 80C: ₹{eligible:,.0f}\nPotential Tax Saved: ₹{saved:,.0f}")
 
 # ------------------------ 7. Post-Retirement Income Simulation ------------------------
-st.header("\ud83c\udfe6 7. Post-Retirement Income Simulation")
+st.header("7. Post-Retirement Income Simulation")
 def post_retirement_income_models(total_corpus, annuity_rate, swp_amount):
     annual_annuity = total_corpus * annuity_rate / 100
     years_swp = total_corpus / (swp_amount * 12)
@@ -126,7 +126,7 @@ if st.button("\ud83d\udcc8 Simulate Income Models"):
     st.success(f"Annual Annuity Income: ₹{annuity:,.0f}\nSWP Duration: {swp_years:.1f} years")
 
 # ------------------------ 8. Excel Export ------------------------
-if st.button("\ud83d\udcc5 Download Excel Summary"):
+if st.button("Download Excel Summary"):
     output = io.BytesIO()
     with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
         pd.DataFrame({
