@@ -93,7 +93,7 @@ def sip_simulation(monthly_investment, annual_return_rate, years):
 monthly = st.number_input("SIP Monthly Investment (₹)", 1000, 100000, 5000, key="sip")
 rate = st.number_input("Expected Annual Return (%)", 1.0, 20.0, 12.0, key="sip_rate")
 years = st.slider("Investment Duration (Years)", 1, 40, 20, key="sip_years")
-if st.button("\ud83e\uddf2 Calculate SIP Growth"):
+if st.button("Calculate SIP Growth"):
     invested, value = sip_simulation(monthly, rate, years)
     st.success(f"Total Invested: ₹{invested:,.0f}, Future Value: ₹{value:,.0f}")
     st.bar_chart(pd.DataFrame({"Future Value": [value], "Invested": [invested]}))
